@@ -127,20 +127,27 @@ struct Node
     }
 };
 */
-void preorderTraversal(Node* root,vector<int> &ans){
-    if(root==NULL){
-        return;
-    }
-    
-    ans.push_back(root->data);
-    preorderTraversal(root->left,ans);
-    preorderTraversal(root->right,ans);
-    
-}
+
 //Function to return a list containing the preorder traversal of the tree.
 vector <int> preorder(Node* root)
 {
   vector<int> ans;
-  preorderTraversal(root,ans);
+  stack<Node*> s;
+  Node* node = root;
+  while(true){
+      if(node!=NULL){
+          ans.push_back(node->data);
+          s.push(node);
+          node=node->left;
+      }
+      else{
+         if(s.empty()){
+             break;
+         } 
+         Node* temp = s.top();
+         s.pop();
+         node = temp->right;
+      }
+  }
   return ans;
 }
