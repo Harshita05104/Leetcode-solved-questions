@@ -14,13 +14,13 @@ class Solution {
         long long res;
         if(N%2==0){
             res = N/2;
-            res = res*1LL;
-            ans = res*res*1LL;
+            //res = res*1LL;
+            ans = 1LL*res*res;
         }
         else{
             res = N/2;
-            res = res*1LL;
-            ans = res*(res+1)*1LL;
+            //res = res*1LL;
+            ans = 1LL*res*(res+1);
         }
         
         return ans;
