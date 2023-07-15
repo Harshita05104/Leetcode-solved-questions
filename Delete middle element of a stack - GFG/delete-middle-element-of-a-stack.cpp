@@ -14,7 +14,6 @@ class Solution
     void deleteMid(stack<int>&s, int sz)
     {
         if(s.size()==(sz+1)/2){
-            //cout<<s.size()<<" "<<s.top()<<endl;
             s.pop();
             return;
         }
