@@ -20,9 +20,27 @@ class Solution {
 	        return dp[i][j] = ans;
 	        
 	    }
+	    int tab(string str){
+	        vector<vector<int>> dp(str.size()+1,vector<int>(str.size()+1,0));
+	        
+	        for(int i=str.size()-1;i>=0;i--){
+	            for(int j=str.size()-1;j>=0;j--){
+	                if(str[i]==str[j] && i!=j){
+        	            dp[i][j] = 1+dp[i+1][j+1];
+        	        }
+        	        else{
+        	            dp[i][j] = max(dp[i][j+1],dp[i+1][j]);
+        	        }
+	            }
+	        }
+	        
+	        return dp[0][0];
+	    }
 		int LongestRepeatingSubsequence(string str){
-		    vector<vector<int>> dp(str.size()+1,vector<int>(str.size()+1,-1));
-		    return func(str,str,0,0,dp);
+		   // vector<vector<int>> dp(str.size()+1,vector<int>(str.size()+1,-1));
+		    //return func(str,str,0,0,dp);
+		    
+		    return tab(str);
 		}
 
 };
