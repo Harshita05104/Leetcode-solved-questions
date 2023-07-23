@@ -74,8 +74,13 @@ class Solution
             temp0->next = twoHead->next;
             temp2->next = NULL;
         }
+        head = zeroHead->next;
         
-        return zeroHead->next;
+        delete zeroHead;
+        delete oneHead;
+        delete twoHead;
+        
+        return head;
     }
 };
 
