@@ -45,25 +45,25 @@ class Solution
     {
        vector<int> ans;
        queue<Node*> q;
-       if(root==NULL){
-           return ans;
-       }
+       
+       if(root==NULL) return ans;
+       
        q.push(root);
+       
        while(!q.empty()){
-           ans.push_back(q.front()->data);
-           int size = q.size();
-           while(size--){
-               Node* temp = q.front();
+           int sz = q.size();
+           Node* temp = q.front();
+           for(int i=0;i<sz;i++){
+               temp = q.front();
                q.pop();
-               if(temp->right){
-                   q.push(temp->right);
-               }
-               if(temp->left){
-                   q.push(temp->left);
-               }
+               
+               if(temp->left) q.push(temp->left);
+               if(temp->right) q.push(temp->right);
            }
            
+           ans.push_back(temp->data);
        }
+       
        return ans;
     }
 };
